@@ -78,7 +78,7 @@ services:
       - no-new-privileges:true
     restart: always
     networks:
-      - scb-net
+      - coolify
   socioboard-web:
     image: sintelli/socioboard-web:latest
     container_name: socioboard-web
@@ -90,7 +90,7 @@ services:
       LARAVEL_KEY: ${LARAVEL_KEY}
     restart: always
     networks:
-      - scb-net
+      - coolify
   socioboard-mysql:
     image: library/mysql:latest
     container_name: socioboard-mysql
@@ -104,7 +104,7 @@ services:
       - scb-mysql:/var/lib/mysql
       - ./perma-act-users.sql:/perma-act-users.sql
     networks:
-      - scb-net
+      - coolify
   socioboard-mongo:
     image: mongo:latest
     container_name: socioboard-mongo
@@ -117,7 +117,7 @@ services:
       - scb-mongo:/data/db
     restart: always
     networks:
-      - scb-net
+      - coolify
   socioboard-nginx:
     image: nginx:latest
     container_name: socioboard-nginx
@@ -138,10 +138,10 @@ services:
       - ./nginx/ssl:/ssl
     restart: always
     networks:
-      - scb-net
+      - coolify
 volumes:
   scb-mongo: {}
   scb-mysql: {}
 networks:
-  scb-net:
+  coolify:
     driver: bridge
